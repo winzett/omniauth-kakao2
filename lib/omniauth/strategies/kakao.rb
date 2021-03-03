@@ -16,8 +16,8 @@ module OmniAuth
 
       info do
         {
-          'name' => raw_properties['nickname'],
-          'image' => raw_properties['thumbnail_image'],
+          'name' => raw_properties&.dig('nickname'),
+          'image' => raw_properties&.dig('thumbnail_image'),
         }
       end
 
@@ -31,7 +31,7 @@ module OmniAuth
       end
 
       def raw_properties
-        @raw_properties ||= raw_info['properties']
+        @raw_properties ||= raw_info.dig('properties')
       end
     end
   end
