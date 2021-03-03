@@ -19,21 +19,17 @@ module OmniAuth
           'name' => raw_properties&.dig('nickname'),
           'profile' => raw_properties&.dig('profile_image'),
           'image' => raw_properties&.dig('thumbnail_image'),
+          'kakao_account' => {
+                                'profile' => raw_kakao_account&.dig('profile'),
+                                'email' => raw_kakao_account&.dig('email'),
+                                'age_range' => raw_kakao_account&.dig('age_range'),
+                                'birthday' => raw_kakao_account&.dig('birthday'),
+                                'gender' => raw_kakao_account&.dig('gender'),
+                                'phone_number' => raw_kakao_account&.dig('phone_number'),
+                              }
         }
       end
       
-      kakao_account do
-        {
-          'profile' => raw_kakao_account&.dig('profile'),
-          'email' => raw_kakao_account&.dig('email'),
-          'age_range' => raw_kakao_account&.dig('age_range'),
-          'birthday' => raw_kakao_account&.dig('birthday'),
-          'gender' => raw_kakao_account&.dig('gender'),
-          'phone_number' => raw_kakao_account&.dig('phone_number'),
-
-        }
-      end
-
       extra do
         {'properties' => raw_properties}
       end
